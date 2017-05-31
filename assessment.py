@@ -163,7 +163,7 @@ def calculate_price(price, state, OR = 0):
     # the test for this function were inconsistent in terms of number of decimals
     # this make more complex than neccesary the code. 
     # As well, two different tax rates for "MA"
-    
+
     taxes = {"CA": 0.0815, "NM": 0.05, "PA": 0.083, "MA": [0.0763,0.0738], "OR": 0.0}
     if state == "OR":
         total_price = round(price,1) 
@@ -207,6 +207,21 @@ def calculate_price(price, state, OR = 0):
 
 
 ###############################################################################
+
+def outer(word):
+    """ call a inner function that multiply the given word by 3 and return word """
+
+    mult_word = inner(word)
+
+    return (word, mult_word)
+
+def inner (word):
+    """ multiply by 3 a given word """
+
+    mult_word = word * 3
+
+    return mult_word
+
 
 # END OF ASSESSMENT: You can ignore everything below.
 
