@@ -100,7 +100,10 @@ def is_berry(fruit):
 
     """
 
-    pass
+    if fruit == 'strawberry' or fruit == 'blackberry' or fruit == 'raspberry':
+        return True
+    else:
+        return False
 
 
 def shipping_cost(fruit):
@@ -114,7 +117,10 @@ def shipping_cost(fruit):
 
     """
 
-    pass
+    if is_berry(fruit):
+        return 0
+    else:
+        return 5
 
 
 def append_to_list(lst, num):
@@ -126,10 +132,12 @@ def append_to_list(lst, num):
 
     """
 
-    pass
+    lst.append(num)
+
+    return lst
 
 
-def calculate_price(FILL_ME_IN):
+def calculate_price(price, state, OR = 0):
     """Calculate total price of an item, figuring in state taxes and fees.
 
     >>> calculate_price(40, "CA")
@@ -152,7 +160,25 @@ def calculate_price(FILL_ME_IN):
 
     """
 
-    pass
+    # the test for this function were inconsistent in terms of number of decimals
+    # this make more complex than neccesary the code. 
+    # As well, two different tax rates for "MA"
+    
+    taxes = {"CA": 0.0815, "NM": 0.05, "PA": 0.083, "MA": [0.0763,0.0738], "OR": 0.0}
+    if state == "OR":
+        total_price = round(price,1) 
+    elif state == "CA":    
+        total_price = round (price * (1 + taxes[state]),2)
+    elif state == "MA":
+        if price > 100:
+            total_price = round (price * (1 + taxes[state][1]),1)
+        else:       
+            total_price = round (price * (1 + taxes[state][0]),1)
+    else:
+        total_price = round (price * (1 + taxes[state]),1)        
+
+    return total_price
+
 
 
 ###############################################################################
